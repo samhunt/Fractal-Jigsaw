@@ -6,11 +6,9 @@ import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-
-
 public class Fractal extends JPanel{
     private static double max_length = 600;
-    private static int fractal = 0;
+    private static int fracOrder = 0;
     private static double length;
     private static ArrayList<Character> order = new ArrayList<Character>();
 
@@ -18,7 +16,8 @@ public class Fractal extends JPanel{
     	// setup the JFrame
         JFrame frame = new JFrame("Fractal Jigsaw");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(new Fractal());
+        Fractal fractal = new Fractal();
+        frame.getContentPane().add(fractal);
         frame.setSize(800,800);
         frame.setPreferredSize(new Dimension(1200, 800));
         frame.pack();
@@ -29,29 +28,30 @@ public class Fractal extends JPanel{
         System.out.println("Please input the fractal that you want.");
         try{
             if(scan.hasNext()){
-            	fractal = Integer.parseInt(scan.next());
+            	fracOrder = Integer.parseInt(scan.next());
             }
         }catch(NumberFormatException e){
             System.out.println("You must input a number.");
         }
         scan.close();
         
-        drawFract(fractal); // draw the fractal
+        drawFract(); // draw the fractal
+        fractal.repaint(); //paint
     }
 
     // takes the fractal that the user inputs 
-    private static void drawFract(int fractal)
+    private static void drawFract()
     {
     	// create the 0 fractal (cube)
         order.add('r'); // right
         order.add('d'); // down
         order.add('l'); // left
         order.add('u'); // up
-        if(fractal > 0){
-            length = max_length/(Math.pow(3,(double)fractal));
+        if(fracOrder > 0){
+            length = max_length/(Math.pow(3,(double)fracOrder));
             if(length < 1)
                 length = 1;
-	        for(int i = 1; i <= fractal; i++){
+	        for(int i = 1; i <= fracOrder; i++){
 	            for(int j= order.toArray().length-1; j>=0; j--){
 	                int pos = j+1;
 	                char store = order.get(j);
