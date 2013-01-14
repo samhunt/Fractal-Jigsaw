@@ -26,17 +26,23 @@ public class Fractal extends JPanel{
         // Get the fractal that the user wants to be shown
     	Scanner scan = new Scanner(System.in);
         System.out.println("Please input the fractal that you want.");
-        try{
-            if(scan.hasNext()){
-            	fracOrder = Integer.parseInt(scan.next());
+        while(scan.hasNext())
+        {
+            if(scan.hasNextInt()){
+            	fracOrder = scan.nextInt();
+                scan.close();
+                
+                drawFract(); // draw the fractal
+                fractal.repaint(); //paint
+                break;
             }
-        }catch(NumberFormatException e){
-            System.out.println("You must input a number.");
+            else // you did not enter a string.
+            {
+            	scan.next(); // make sure to move the counter so that you
+            				 // don't get stuck in an infinite loop.
+                System.out.println("You must input a number.");
+            }
         }
-        scan.close();
-        
-        drawFract(); // draw the fractal
-        fractal.repaint(); //paint
     }
 
     // takes the fractal that the user inputs 
