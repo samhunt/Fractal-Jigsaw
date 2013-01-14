@@ -66,9 +66,9 @@ public class Fractal extends JPanel{
 	                    order.add(pos++, 'r'); // {right, down, right, up, right}
 	                }else if(store == 'd'){
 	                	//
-				//  |           |_
-				//  |  goes to   _|
-				//  |           |
+                		//  |           |_
+	                	//  |  goes to   _|
+	                	//  |           |
 	                	//
 	                    order.add(pos++, 'r'); // {down, right}
 	                    order.add(pos++, 'd'); // {down, right, down}
@@ -76,7 +76,7 @@ public class Fractal extends JPanel{
 	                    order.add(pos++, 'd'); // {down, right, down, left, down}
 	                }else if(store == 'l'){
 	                	//                  _
-				//  ___  goes to  _| |_
+	                	//  ___  goes to  _| |_
 	                	//
 	                    order.add(pos++, 'u'); // {left, up}
 	                    order.add(pos++, 'l'); // {left, up, left}
@@ -84,9 +84,9 @@ public class Fractal extends JPanel{
 	                    order.add(pos++, 'l'); // {left, up, left, down, left}
 	                }else if(store == 'u'){
 	                	//
-				//  |            _|
-				//  |  goes to  |_
-				//  |             |
+	                	//  |            _|
+	                	//  |  goes to  |_
+	                	//  |             |
 	                	//
 	                    order.add(pos++, 'l'); // {up, left}
 	                    order.add(pos++, 'u'); // {up, left, up}
