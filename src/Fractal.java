@@ -13,26 +13,16 @@ public class Fractal extends JPanel{
     private static ArrayList<Character> order = new ArrayList<Character>();
 
     public static void main(String[] args){
-    	// setup the JFrame
-        JFrame frame = new JFrame("Fractal Jigsaw");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Fractal fractal = new Fractal();
-        frame.getContentPane().add(fractal);
-        frame.setSize(800,800);
-        frame.setPreferredSize(new Dimension(1200, 800));
-        frame.pack();
-        frame.setVisible(true);
-
         // Get the fractal that the user wants to be shown
     	Scanner scan = new Scanner(System.in);
-        System.out.println("Please input the fractal that you want.");
+        System.out.println("Please input the fractal order that you want.");
         while(scan.hasNext())
         {
             if(scan.hasNextInt()){
             	fracOrder = scan.nextInt();
                 scan.close();
-                
-                drawFract(); // draw the fractal
+                Fractal fractal = setupJFrame();
+                drawFrac(); // draw the fractal
                 fractal.repaint(); //paint
                 break;
             }
@@ -45,8 +35,22 @@ public class Fractal extends JPanel{
         }
     }
 
+    private static Fractal setupJFrame(){
+    	// setup the JFrame
+        JFrame frame = new JFrame("Fractal Jigsaw");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Fractal fractal = new Fractal();
+        frame.getContentPane().add(fractal);
+        frame.setSize(800,800);
+        frame.setPreferredSize(new Dimension(1200, 800));
+        frame.pack();
+        frame.setVisible(true);
+        frame.toFront();
+        return fractal;
+    }
+    
     // takes the fractal that the user inputs 
-    private static void drawFract()
+    private static void drawFrac()
     {
     	// create the 0 fractal (cube)
         order.add('r'); // right
